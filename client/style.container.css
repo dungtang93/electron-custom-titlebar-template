@@ -1,0 +1,154 @@
+/*#region video*/
+
+/*hide full-screen button*/
+video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+
+#video-element {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-position: center;
+  object-fit: contain;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  color: greenyellow;
+  font-size: 3;
+}
+
+/*#endregion video*/
+
+/*#region progress circle*/
+
+.circle {
+  z-index: 1;
+}
+
+.circle-content .circle-content-viewbox {
+  width: 100%;
+  height: auto;
+  left: 70%;
+  top: 30%;
+}
+
+.circle circle {
+  transition: fill 400ms;
+  fill: black;
+}
+
+.loader.loaded .circle circle {
+  transition: fill 0;
+  fill: #ff9800;
+}
+
+.circle-content {
+  transition: opacity 400ms;
+  opacity: 1;
+  z-index: 10;
+}
+
+.loader.loaded .circle-content {
+  transition: opacity 0;
+  opacity: 0;
+}
+
+.circle-content svg {
+  width: 12em;
+  height: 12em;
+}
+
+.circle-finished {
+  display: none;
+  z-index: 11;
+}
+
+.loader.loaded .circle-finished {
+  display: block;
+}
+
+.circle,
+.circle-content,
+.circle-finished {
+  font-weight: 100;
+  width: 23em;
+  height: 23em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translatey(-50%) translatex(-50%);
+  transform: translatey(-50%) translatex(-50%);
+}
+
+svg {
+  width: 8em;
+  height: 8em;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translatey(-50%) translatex(-50%);
+  transform: translatey(-50%) translatex(-50%);
+}
+
+path {
+  fill: #fff;
+}
+
+polygon {
+  fill: url(#check-gradient);
+}
+
+.circle-loader svg,
+.circle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-loader {
+  opacity: 0;
+  z-index: -1;
+  width: 24em;
+  height: 24em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translatey(-50%) translatex(-50%);
+  transform: translatey(-50%) translatex(-50%);
+}
+
+.loading .circle-loader {
+  opacity: 1;
+}
+
+.loaded .circle-loader {
+  opacity: 0;
+}
+
+.circle-loader .progress {
+  fill: none;
+  stroke: #ff9800;
+  stroke-dasharray: 384;
+  stroke-dashoffset: 384;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotatez(-90deg);
+  transform: rotatez(-90deg);
+  transition: stroke-dashoffset 300ms ease-out;
+}
+
+.circle-loader .bg {
+  fill: #ffd180;
+}
+
+/*#endregion progress circle*/

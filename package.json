@@ -1,0 +1,26 @@
+{
+  "name": "tronplayer",
+  "version": "1.0.0",
+  "description": "Video player & MP4 converter built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec npm start --ext js,html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-packager . TronPlayer --platform=win32 --arch=x64 --overwrite"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.2.1",
+    "electron-packager": "^13.1.1",
+    "electron-rebuild": "^1.10.1",
+    "eslint": "^6.8.0"
+  },
+  "dependencies": {
+    "electron-builder": "^22.4.1",
+    "handbrake-js": "^4.0.3"
+  },
+  "build": {
+    "appId": "your.id"
+  }
+}

@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*#region custom titlebar*/
+#titlebar-drag-region {
+  -webkit-app-region: drag;
+  /* background-color: rgba(211, 211, 211, 0.4); */
+}
+
+/*scrollable*/
+.dropdown-menu {
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.window-controls {
+  -webkit-app-region: no-drag;
+  font-family: "Segoe MDL2 Assets";
+  font-size: 10px;
+  color: tan;
+  cursor: default;
+}
+
+.window-controls__button:hover {
+  color: rgba(255, 0, 0, 0.5);
+  background: rgba(102, 102, 102, 0.3);
+}
+
+/*#endregion custom titlebar*/

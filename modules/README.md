@@ -1,0 +1,1 @@
+**Codes in this folder should be in the context of `ipcMain`, loaded during `preload`** 
