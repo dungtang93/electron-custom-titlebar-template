@@ -13,12 +13,13 @@
   <script src='./client/vendor/bootstrap.min.js'></script>
   <script src='./client/vendor/jquery.mCustomScrollbar.concat.min.js'></script>
 
+  <!-- CUSTOM PART -->
   <script async src='./client/video_player/video.player.js'></script>
   <script async src='./client/video_converter/video.converter.js'></script>
 </head>
 
 <body>
-  <div class='d-flex justify-content-between align-items-center bg-light sticky-top'>
+  <div class='d-flex justify-content-between bg-light sticky-top'>
     <div class='dropdown'>
       <button type='button' class='dropdown-toggle btn btn-light btn-sm' data-toggle='dropdown'>
         <img src='client/static/icons/yin-yang-icon.png' width='15' height='15' alt=''>
@@ -52,8 +53,9 @@
     </div>
   </div>
 
-  <div class='container' style="display: none;">
-    <video id='video-element' controls></video>
+  <!-- CUSTOM PART -->
+  <div class='flex-container w-100 h-100' style="display: none;">
+    <video id='video-element' class='w-100 h-100' controls></video>
     <div class='overlay'>
       <h3 id='video-name'>Name</h3>
     </div>

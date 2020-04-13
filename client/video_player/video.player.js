@@ -49,7 +49,7 @@
 
   const playVideo = file => {
     if (!file) throw new Error('File name can not be empty')
-    $('.container').show()
+    $('.flex-container').show()
     $('.loader').hide()
     const fileName = getFileName(file)
 
@@ -81,7 +81,7 @@
         return false
       })
       .on('play', () => {
-        $('.container #video-name').html(fileName)
+        $('.flex-container #video-name').html(fileName)
         return true
       })
   }

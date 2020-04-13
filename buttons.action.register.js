@@ -12,7 +12,6 @@ registerMenuButtons(remote, ipcRenderer)
  */
 function registerWindowControlButtons(remote) {
   let window = remote.getCurrentWindow()
-
   const minButton = document.getElementById('min-button'),
     maxButton = document.getElementById('max-button'),
     restoreButton = document.getElementById('restore-button'),
@@ -29,25 +28,18 @@ function registerWindowControlButtons(remote) {
     }
   }
 
-  minButton.addEventListener('click', () => {
-    window.minimize()
-  })
-
+  minButton.addEventListener('click', () => window.minimize())
   maxOrRestore.addEventListener('click', () => {
     window.isMaximized() ? window.unmaximize() : window.maximize()
     toggleMaxRestoreButtons()
   })
+  closeButton.addEventListener('click', () => window.close())
 
   // Toggle maximise/restore buttons when maximisation/unmaximisation
-  // occurs by means other than button clicks e.g. double-clicking
-  // the title bar:
+  // occurs by means other than button clicks e.g. double-clicking the title bar:
   toggleMaxRestoreButtons()
   window.on('maximize', toggleMaxRestoreButtons)
   window.on('unmaximize', toggleMaxRestoreButtons)
-
-  closeButton.addEventListener('click', () => {
-    window.close()
-  })
 }
 
 /**
