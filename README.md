@@ -1,5 +1,5 @@
 ### This repo provides an skeleton/template for starting an Electron application with custom HTML-built titlebar & dropdown menu, best practices & security in mind
-![img](./img/app.jpg)  
+![img](./img/app.JPG)  
 using [Bootstrap](https://getbootstrap.com/)
 
 ## Install:
