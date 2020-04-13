@@ -12,19 +12,19 @@ npm run dev
 This tutorial assumes users already have basic knowledge of Electron
 
 ---
-![](./img/0.svg)
+![](./img/0.png)
 Add _Bootstrap, jQuery & mCustomScrollbar_ to the _head_ section of `index.html`
 
 
 ---
-![](./img/1.svg)
+![](./img/1.png)
 Add window buttons on titlebar (credits to _binaryfunt's_ [seamless titlebar tutorial](https://github.com/binaryfunt/electron-seamless-titlebar-tutorial))
 
-![](./img/1-1.svg)
+![](./img/1-1.png)
 Add Bootstrap's dropdown menu, wrap them inside a flex-box
 
 ---
-![](./img/2.svg)
+![](./img/2.png)
 In `main.js`, create `BrowserWindow` with these configs   
 * _`noteIntegration: false` is a recommended practice as it disallow using `require()` in the client, stopping malicious attacks from unstrusted users/sites_
 * _as we will not have access to Nodejs's modules on the client side, we'd have to use a `preload` script to load required modules & expose only neccessary APIs_
@@ -32,24 +32,24 @@ In `main.js`, create `BrowserWindow` with these configs
 
 
 ---
-![](./img/3.svg)
+![](./img/3.png)
 In `preload.js`, load the javascript script to register action listeners for window buttons & dropdown menu
 
-![](./img/4.svg)
+![](./img/4.png)
 Register the actions of the window buttons (also register the actions of the dropdown menu here)
 
 *We should have the titlebar working now*, next is to configure the `contextBridge`
 
 
 ---
-![](./img/5.svg)
+![](./img/5.png)
 The `exposeInMainWorld('bridge', ...)` will expose `ipcRenderer's` `send()` & `on()` methods, parameter validations can be done here
 
-![](./img/6.svg)
+![](./img/6.png)
 Just access the newly created `bridge` object under client's `window`
 
 
 ---
 _Note: for Node.js module that access other programs, or process that are native to Node runtime only, exposing that entire module will not work on the browser side_  
 We have to be a little creative here:
-![](./img/7.svg)
+![](./img/7.png)
