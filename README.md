@@ -1,6 +1,6 @@
 ### This repo provides an skeleton/template for starting an Electron application with custom HTML-built titlebar & dropdown menu, best practices & security in mind
+**The example app is a HTML5 video player + .mp4 file converter**
 ![img](./img/app.JPG)  
-using [Bootstrap](https://getbootstrap.com/)
 
 ## Install:
 ```
