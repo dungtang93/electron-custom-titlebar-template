@@ -7,8 +7,19 @@ export declare global {
     bridge: {
       send: Electron.IpcRenderer.send,
       on: (channel: String, callback: VoidFunction) => void
+    }
+    common: {
+      getFileName: typeof getFileName,
+      getFileType: typeof getFileType,
+      getFiles: typeof getFiles,
+      getUserDataPath: typeof getUserDataPath,
+      moveFile: typeof moveFile,
+      shuffle: typeof shuffle
     },
-    dialog: { showErrorBox, showMessageBox, showOpenDialog },
-    common: { getFileName, getFileType, getFiles, getUserDataPath, moveFile, shuffle }
+    dialog: {
+      showErrorBox: typeof showErrorBox,
+      showMessageBox: typeof showMessageBox,
+      showOpenDialog: typeof showOpenDialog
+    }
   }
 }

@@ -2,35 +2,18 @@ const defaultOptions = {
     properties: ['openDirectory']
 }
 
-/**
- * 
- * @param {Electron.Dialog} dialog 
- * @param {Electron.OpenDialogOptions} options 
- */
-const showOpenDialog = (dialog, options = defaultOptions) => {
-  return dialog.showOpenDialog(null, options)
-}
+const { remote } = require('electron');
 
-/**
- * 
- * @param {Electron.Dialog} dialog 
- * @param {String} content 
- */
-const showErrorBox = (dialog, content) => {
-  dialog.showErrorBox('Error', content)
-}
+(remote => {
+  const showOpenDialog = (options = defaultOptions) => remote.dialog.showOpenDialog(null, options)
 
-/**
- * 
- * @param {Electron.Dialog} dialog 
- * @param {Electron.OpenDialogOptions} options 
- */
-const showMessageBox = (dialog, callback, options = defaultOptions) => {
-    return dialog.showMessageBox(options, callback)
-}
+  const showErrorBox = (content) => remote.dialog.showErrorBox('Error', content)
 
-module.exports = {
+  const showMessageBox = (options = defaultOptions) => remote.dialog.showMessageBoxSync(options)
+
+  module.exports = {
     showOpenDialog,
     showErrorBox,
     showMessageBox
-}
+  }
+})(remote)

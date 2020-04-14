@@ -4,7 +4,7 @@ const { remote, ipcRenderer } = require('electron')
 
 
 registerWindowControlButtons(remote)
-registerMenuButtons(remote, ipcRenderer)
+registerMenuButtons(ipcRenderer)
 
 /**
  * 
@@ -47,17 +47,17 @@ function registerWindowControlButtons(remote) {
  * @param {Electron.Remote} remote 
  * @param {Electron.ipcRenderer} ipcRenderer
  */
-function registerMenuButtons(remote, ipcRenderer) {
+function registerMenuButtons(ipcRenderer) {
   let openFolderButton = document.getElementById('open-folder-button')
   openFolderButton.addEventListener('click', async () => {
-    let path = await showOpenDialog(remote.dialog, {properties: ['openDirectory']})
+    let path = await showOpenDialog({properties: ['openDirectory']})
     if (!path.canceled && path.filePaths.length > 0)
       ipcRenderer.send('main:show-open-dialog-shuffle', path.filePaths[0])
   })
 
   let convertAllButton = document.getElementById('convert-folder-button')
   convertAllButton.addEventListener('click', async () => {
-    let path = await showOpenDialog(remote.dialog, {properties: ['openDirectory']})
+    let path = await showOpenDialog({properties: ['openDirectory']})
     if (!path.canceled && path.filePaths.length > 0)
       ipcRenderer.send('main:show-open-dialog-shuffle-convert', path.filePaths[0])
   })

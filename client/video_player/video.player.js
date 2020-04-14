@@ -1,8 +1,5 @@
 /// <reference path='../types.d.ts' />
 (() => {
-  const { showMessageBox } = window.dialog
-  const { getFileType, getFileName } = window.common
-
   let currentIndex = 0
   let videos = []
 
@@ -13,7 +10,7 @@
     left: 37, // backward
     right: 39, // forward
   }
-  
+
   // received a shuffled array of files after user press 'File > open...'
   window.bridge.on('renderer:shuffled-files', async (files) => {
     videos = files
@@ -51,33 +48,34 @@
     if (!file) throw new Error('File name can not be empty')
     $('.flex-container').show()
     $('.loader').hide()
-    const fileName = getFileName(file)
+    const fileName = window.common.getFileName(file)
 
     $('#video-element')
       .attr({
         src: `file:///${file}`,
-        type: `video/${getFileType(file)}`
+        type: `video/${window.common.getFileType(file)}`
       })
       .unbind() //unbind all previously attached listeners to prevent events bubling up
       .trigger('play')
       .on('error', e => {
-        showMessageBox({
-          type: 'error',
-          title: e.target.error.message,
-          message: `Delete ${fileName} ?`,
-          buttons: ['Delete', 'Skip'],
-          defaultId: 1
-        }, response => {
-          if (response === 1) { // skip
-            videos.splice(currentIndex, 1)
-            playVideo(videos[currentIndex])
-          } else {
-            videos.splice(currentIndex, 1)
-            /*TODO: delete file*/
+        const response = window.dialog.showMessageBox(
+          {
+            type: 'error',
+            title: e.target.error.message,
+            message: `Delete ${fileName} ?`,
+            buttons: ['Delete', 'Skip'],
+            defaultId: 1
+          })
 
-            playVideo(videos[currentIndex])
-          }
-        })
+        if (response === 1) { // skip
+          videos.splice(currentIndex, 1)
+          playVideo(videos[currentIndex])
+        } else {
+          videos.splice(currentIndex, 1)
+          /*TODO: delete file*/
+
+          playVideo(videos[currentIndex])
+        }
         return false
       })
       .on('play', () => {
